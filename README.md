@@ -35,9 +35,11 @@ rails active_storage:install
 If you want to delete the image
 
 Post.first.purge # It will delete it immediately
+
 Post.first.purge_later # It will delete with the help of background job
 
 In case of has any
 
 Post.uploads.purge
+
 Post.uploads.first.purge
