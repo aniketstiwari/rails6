@@ -27,3 +27,7 @@ shikhar.followees
 References: https://github.com/reireynoso/self_ref_practice
 
 ----------------------------------------------------------------
+
+Active Storage setup
+
+rails active_storage:install
