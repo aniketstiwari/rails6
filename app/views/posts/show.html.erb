@@ -10,5 +10,21 @@
   <%= @post.body %>
 </p>
 
+<%= image_tag @post.header_image.variant(resize: "600x600") %>
+
+<div>
+  <% @post.uploads.each do |upload| %>
+    <% if upload.variable? %>
+      <%= link_to image_tag(upload.variant(resize: "600x600")), upload %>
+    <% elsif upload.previewable?  #if you want to download the pdf instead of opening it in browser %>
+      <%= link_to (image_tag upload.preview(resize: "600x600")), rails_blob_path(upload, disposition: :attachment) %>
+    <% elsif upload.image? #If the image is not variable? or previewable? which means it  is svg image %>
+      <%= link_to image_tag(upload, width: 400), upload  %>
+    <% else %>
+      <%= link_to upload.filename, rails_blob_path(upload, disposition: :attachment) %>
+    <% end %>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

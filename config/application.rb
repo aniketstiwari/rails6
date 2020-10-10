@@ -10,6 +10,7 @@ module Rails6App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.active_storage.content_types_to_serve_as_binary -= ['image/svg+xml'] 
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

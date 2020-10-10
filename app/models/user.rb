@@ -22,4 +22,6 @@ class User < ApplicationRecord
 
   has_many :received_messages, foreign_key: :receiver_id, class_name: "Message"
   has_many :senders, through: :received_messages, source: :person_sending_the_message #message which you receieved
+
+  has_one_attached :avatar
 end
